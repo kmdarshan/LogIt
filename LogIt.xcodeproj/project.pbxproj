@@ -10,11 +10,13 @@
 		B0FA4C4B1A8FEEF20041BE7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4A1A8FEEF20041BE7D /* main.m */; };
 		B0FA4C4E1A8FEEF20041BE7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4D1A8FEEF20041BE7D /* AppDelegate.m */; };
 		B0FA4C511A8FEEF30041BE7D /* LogIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4F1A8FEEF30041BE7D /* LogIt.xcdatamodeld */; };
-		B0FA4C541A8FEEF30041BE7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C531A8FEEF30041BE7D /* ViewController.m */; };
-		B0FA4C571A8FEEF30041BE7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FA4C551A8FEEF30041BE7D /* Main.storyboard */; };
 		B0FA4C591A8FEEF30041BE7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0FA4C581A8FEEF30041BE7D /* Images.xcassets */; };
 		B0FA4C5C1A8FEEF30041BE7D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0FA4C5A1A8FEEF30041BE7D /* LaunchScreen.xib */; };
 		B0FA4C681A8FEEF50041BE7D /* LogItTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C671A8FEEF50041BE7D /* LogItTests.m */; };
+		B0FA4C731A8FF8050041BE7D /* LTBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C721A8FF8050041BE7D /* LTBaseTableViewController.m */; };
+		B0FA4C741A8FF8050041BE7D /* LTBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C721A8FF8050041BE7D /* LTBaseTableViewController.m */; };
+		B0FA4C771A90069B0041BE7D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0FA4C761A90069B0041BE7D /* Localizable.strings */; };
+		B0FA4C781A90069B0041BE7D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0FA4C761A90069B0041BE7D /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +36,15 @@
 		B0FA4C4C1A8FEEF20041BE7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B0FA4C4D1A8FEEF20041BE7D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B0FA4C501A8FEEF30041BE7D /* LogIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LogIt.xcdatamodel; sourceTree = "<group>"; };
-		B0FA4C521A8FEEF30041BE7D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B0FA4C531A8FEEF30041BE7D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B0FA4C561A8FEEF30041BE7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B0FA4C581A8FEEF30041BE7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B0FA4C5B1A8FEEF30041BE7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B0FA4C611A8FEEF50041BE7D /* LogItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FA4C661A8FEEF50041BE7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0FA4C671A8FEEF50041BE7D /* LogItTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogItTests.m; sourceTree = "<group>"; };
+		B0FA4C711A8FF8050041BE7D /* LTBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTBaseTableViewController.h; path = controllers/LTBaseTableViewController.h; sourceTree = "<group>"; };
+		B0FA4C721A8FF8050041BE7D /* LTBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTBaseTableViewController.m; path = controllers/LTBaseTableViewController.m; sourceTree = "<group>"; };
+		B0FA4C761A90069B0041BE7D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		B0FA4C791A90075D0041BE7D /* LTBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBase.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,11 +88,11 @@
 			children = (
 				B0FA4C4C1A8FEEF20041BE7D /* AppDelegate.h */,
 				B0FA4C4D1A8FEEF20041BE7D /* AppDelegate.m */,
-				B0FA4C521A8FEEF30041BE7D /* ViewController.h */,
-				B0FA4C531A8FEEF30041BE7D /* ViewController.m */,
-				B0FA4C551A8FEEF30041BE7D /* Main.storyboard */,
+				B0FA4C751A8FFC710041BE7D /* controllers */,
 				B0FA4C581A8FEEF30041BE7D /* Images.xcassets */,
+				B0FA4C791A90075D0041BE7D /* LTBase.h */,
 				B0FA4C5A1A8FEEF30041BE7D /* LaunchScreen.xib */,
+				B0FA4C761A90069B0041BE7D /* Localizable.strings */,
 				B0FA4C4F1A8FEEF30041BE7D /* LogIt.xcdatamodeld */,
 				B0FA4C481A8FEEF10041BE7D /* Supporting Files */,
 			);
@@ -120,6 +123,15 @@
 				B0FA4C661A8FEEF50041BE7D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B0FA4C751A8FFC710041BE7D /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B0FA4C711A8FF8050041BE7D /* LTBaseTableViewController.h */,
+				B0FA4C721A8FF8050041BE7D /* LTBaseTableViewController.m */,
+			);
+			name = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,8 +214,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0FA4C571A8FEEF30041BE7D /* Main.storyboard in Resources */,
 				B0FA4C5C1A8FEEF30041BE7D /* LaunchScreen.xib in Resources */,
+				B0FA4C771A90069B0041BE7D /* Localizable.strings in Resources */,
 				B0FA4C591A8FEEF30041BE7D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +224,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0FA4C781A90069B0041BE7D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,9 +235,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0FA4C731A8FF8050041BE7D /* LTBaseTableViewController.m in Sources */,
 				B0FA4C511A8FEEF30041BE7D /* LogIt.xcdatamodeld in Sources */,
 				B0FA4C4E1A8FEEF20041BE7D /* AppDelegate.m in Sources */,
-				B0FA4C541A8FEEF30041BE7D /* ViewController.m in Sources */,
 				B0FA4C4B1A8FEEF20041BE7D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0FA4C741A8FF8050041BE7D /* LTBaseTableViewController.m in Sources */,
 				B0FA4C681A8FEEF50041BE7D /* LogItTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,14 +262,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B0FA4C551A8FEEF30041BE7D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B0FA4C561A8FEEF30041BE7D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B0FA4C5A1A8FEEF30041BE7D /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
