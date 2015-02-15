@@ -6,3 +6,8 @@
   Copyright (c) 2015 Lyft. All rights reserved.
 */
 "messageTripLogging" = "Trip Logging";
+"messageAskPermissionForLoggingDescription" = "To use background location you must turn on 'Always' in the Location Services Settings";
+"messageAskPermissionForLoggingTitleLocationOff" = "Location services are off";
+"messageAskPermissionForLoggingTitleBackgroundOff" = "Background location is not enabled";
+"messageLocationServicesTitle" = "Location Services";
+"messageLocatonServicesDescription" = "Location Services need to be turned on";

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "LTBase.h"
-typedef enum {
+#import <CoreLocation/CoreLocation.h>
+typedef NS_ENUM(int, LTSection) {
     LTSectionTripLogging = 0,
     LTSectionTripDescription
-}LTSection;
+};
 
 #pragma mark - height
 static const CGFloat rowHeightTripDescription = 60.0f;

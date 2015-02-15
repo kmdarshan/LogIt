@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0A152221A9078DC00AA58F9 /* LTDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A152211A9078DC00AA58F9 /* LTDescriptionTableViewCell.m */; };
+		B0A152231A9078DC00AA58F9 /* LTDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A152211A9078DC00AA58F9 /* LTDescriptionTableViewCell.m */; };
+		B0A152261A907A8F00AA58F9 /* LTDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A152251A907A8F00AA58F9 /* LTDetails.m */; };
+		B0A152271A907A8F00AA58F9 /* LTDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A152251A907A8F00AA58F9 /* LTDetails.m */; };
 		B0FA4C4B1A8FEEF20041BE7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4A1A8FEEF20041BE7D /* main.m */; };
 		B0FA4C4E1A8FEEF20041BE7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4D1A8FEEF20041BE7D /* AppDelegate.m */; };
 		B0FA4C511A8FEEF30041BE7D /* LogIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4F1A8FEEF30041BE7D /* LogIt.xcdatamodeld */; };
@@ -20,6 +24,12 @@
 		B0FA4C7B1A9013D30041BE7D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FA4C7A1A9013D30041BE7D /* CoreLocation.framework */; };
 		B0FA4C7F1A9014560041BE7D /* LTSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C7E1A9014560041BE7D /* LTSwitchTableViewCell.m */; };
 		B0FA4C801A9014560041BE7D /* LTSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C7E1A9014560041BE7D /* LTSwitchTableViewCell.m */; };
+		B0FA4C841A901D3B0041BE7D /* LTLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C831A901D3B0041BE7D /* LTLocation.m */; };
+		B0FA4C851A901D3B0041BE7D /* LTLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C831A901D3B0041BE7D /* LTLocation.m */; };
+		B0FA4C891A9039A20041BE7D /* LTLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C881A9039A20041BE7D /* LTLocationManager.m */; };
+		B0FA4C8A1A9039A20041BE7D /* LTLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C881A9039A20041BE7D /* LTLocationManager.m */; };
+		B0FA4C8F1A9044820041BE7D /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B0FA4C8E1A9044820041BE7D /* Location.gpx */; };
+		B0FA4C901A9044820041BE7D /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B0FA4C8E1A9044820041BE7D /* Location.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B0A152201A9078DC00AA58F9 /* LTDescriptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTDescriptionTableViewCell.h; path = views/LTDescriptionTableViewCell.h; sourceTree = "<group>"; };
+		B0A152211A9078DC00AA58F9 /* LTDescriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTDescriptionTableViewCell.m; path = views/LTDescriptionTableViewCell.m; sourceTree = "<group>"; };
+		B0A152241A907A8F00AA58F9 /* LTDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTDetails.h; path = objects/LTDetails.h; sourceTree = "<group>"; };
+		B0A152251A907A8F00AA58F9 /* LTDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTDetails.m; path = objects/LTDetails.m; sourceTree = "<group>"; };
 		B0FA4C451A8FEEF10041BE7D /* LogIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FA4C491A8FEEF20041BE7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0FA4C4A1A8FEEF20041BE7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -51,6 +65,11 @@
 		B0FA4C7A1A9013D30041BE7D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B0FA4C7D1A9014560041BE7D /* LTSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTSwitchTableViewCell.h; path = views/LTSwitchTableViewCell.h; sourceTree = "<group>"; };
 		B0FA4C7E1A9014560041BE7D /* LTSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTSwitchTableViewCell.m; path = views/LTSwitchTableViewCell.m; sourceTree = "<group>"; };
+		B0FA4C821A901D3B0041BE7D /* LTLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTLocation.h; path = objects/LTLocation.h; sourceTree = "<group>"; };
+		B0FA4C831A901D3B0041BE7D /* LTLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTLocation.m; path = objects/LTLocation.m; sourceTree = "<group>"; };
+		B0FA4C871A9039A20041BE7D /* LTLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTLocationManager.h; path = objects/LTLocationManager.h; sourceTree = "<group>"; };
+		B0FA4C881A9039A20041BE7D /* LTLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTLocationManager.m; path = objects/LTLocationManager.m; sourceTree = "<group>"; };
+		B0FA4C8E1A9044820041BE7D /* Location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Location.gpx; path = gpx/Location.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +112,8 @@
 		B0FA4C471A8FEEF10041BE7D /* LogIt */ = {
 			isa = PBXGroup;
 			children = (
+				B0FA4C8E1A9044820041BE7D /* Location.gpx */,
+				B0FA4C861A901D410041BE7D /* objects */,
 				B0FA4C7C1A9013DD0041BE7D /* frameworks */,
 				B0FA4C811A90145E0041BE7D /* views */,
 				B0FA4C4C1A8FEEF20041BE7D /* AppDelegate.h */,
@@ -157,8 +178,23 @@
 			children = (
 				B0FA4C7D1A9014560041BE7D /* LTSwitchTableViewCell.h */,
 				B0FA4C7E1A9014560041BE7D /* LTSwitchTableViewCell.m */,
+				B0A152201A9078DC00AA58F9 /* LTDescriptionTableViewCell.h */,
+				B0A152211A9078DC00AA58F9 /* LTDescriptionTableViewCell.m */,
 			);
 			name = views;
+			sourceTree = "<group>";
+		};
+		B0FA4C861A901D410041BE7D /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				B0FA4C871A9039A20041BE7D /* LTLocationManager.h */,
+				B0FA4C881A9039A20041BE7D /* LTLocationManager.m */,
+				B0FA4C821A901D3B0041BE7D /* LTLocation.h */,
+				B0FA4C831A901D3B0041BE7D /* LTLocation.m */,
+				B0A152241A907A8F00AA58F9 /* LTDetails.h */,
+				B0A152251A907A8F00AA58F9 /* LTDetails.m */,
+			);
+			name = objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +279,7 @@
 			files = (
 				B0FA4C5C1A8FEEF30041BE7D /* LaunchScreen.xib in Resources */,
 				B0FA4C771A90069B0041BE7D /* Localizable.strings in Resources */,
+				B0FA4C8F1A9044820041BE7D /* Location.gpx in Resources */,
 				B0FA4C591A8FEEF30041BE7D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0FA4C901A9044820041BE7D /* Location.gpx in Resources */,
 				B0FA4C781A90069B0041BE7D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,8 +302,12 @@
 			files = (
 				B0FA4C731A8FF8050041BE7D /* LTBaseTableViewController.m in Sources */,
 				B0FA4C511A8FEEF30041BE7D /* LogIt.xcdatamodeld in Sources */,
+				B0FA4C891A9039A20041BE7D /* LTLocationManager.m in Sources */,
+				B0FA4C841A901D3B0041BE7D /* LTLocation.m in Sources */,
 				B0FA4C7F1A9014560041BE7D /* LTSwitchTableViewCell.m in Sources */,
+				B0A152261A907A8F00AA58F9 /* LTDetails.m in Sources */,
 				B0FA4C4E1A8FEEF20041BE7D /* AppDelegate.m in Sources */,
+				B0A152221A9078DC00AA58F9 /* LTDescriptionTableViewCell.m in Sources */,
 				B0FA4C4B1A8FEEF20041BE7D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,8 +316,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0FA4C851A901D3B0041BE7D /* LTLocation.m in Sources */,
 				B0FA4C741A8FF8050041BE7D /* LTBaseTableViewController.m in Sources */,
+				B0A152231A9078DC00AA58F9 /* LTDescriptionTableViewCell.m in Sources */,
 				B0FA4C801A9014560041BE7D /* LTSwitchTableViewCell.m in Sources */,
+				B0A152271A907A8F00AA58F9 /* LTDetails.m in Sources */,
+				B0FA4C8A1A9039A20041BE7D /* LTLocationManager.m in Sources */,
 				B0FA4C681A8FEEF50041BE7D /* LogItTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,6 +497,7 @@
 				B0FA4C6D1A8FEEF50041BE7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B0FA4C6E1A8FEEF50041BE7D /* Build configuration list for PBXNativeTarget "LogItTests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +506,7 @@
 				B0FA4C701A8FEEF50041BE7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

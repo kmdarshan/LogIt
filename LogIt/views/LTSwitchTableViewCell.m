@@ -8,6 +8,9 @@
 
 #import "LTSwitchTableViewCell.h"
 #import "LTBase.h"
+@interface LTSwitchTableViewCell ()
+@property (nonatomic, strong) UISwitch *switchView;
+@end
 @implementation LTSwitchTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -15,14 +18,16 @@
     if (self) {
         self.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"messageTripLogging", nil)];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-        self.accessoryView = switchView;
+        self.switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+        self.accessoryView = self.switchView;
         if ([self isLoggingSwitchOn]) {
-            [switchView setOn:YES animated:YES];
+            [self.switchView setOn:YES animated:YES];
         } else {
-            [switchView setOn:NO animated:YES];
+            [self.switchView setOn:NO animated:YES];
         }
-        [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+        [self.switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetSwitch:) name:LTLoggingSwitchOffNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetSwitch:) name:LTLoggingSwitchOnNotification object:nil];
     }
     return self;
 }
@@ -35,6 +40,18 @@
 }
 
 -(void) switchChanged:(id)sender {
-    NSLog(@"switch changed");
+    if ([sender isOn]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingUserSwitchOnNotification object:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingUserSwitchOffNotification object:nil];
+    }
+}
+
+-(void) resetSwitch:(NSNotification*) notification {
+    if ([[notification name] isEqualToString:LTLoggingSwitchOffNotification]) {
+        [self.switchView setOn:NO animated:YES];
+    } else {
+        [self.switchView setOn:YES animated:YES];
+    }
 }
 @end
