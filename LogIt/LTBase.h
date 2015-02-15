@@ -17,6 +17,7 @@ static NSString * const LTLoggingSwitchOnNotification = @"com.lyft.logger.switch
 static NSString * const LTLoggingUserSwitchOnNotification = @"com.lyft.logger.switch.user.on";
 static NSString * const LTLoggingUserSwitchOffNotification = @"com.lyft.logger.switch.user.off";
 static NSString * const LTSwitchStatus = @"switchStatus";
+static NSString * const LTAskedUserPermissionForNotification = @"com.lyft.logger.user.permissionNotification";
 static CGFloat const regularFontSize = 15.0f;
 static CGFloat const smallFontSize = 12.0f;
 static inline UIColor *LTMediumColor() {
@@ -27,6 +28,9 @@ static inline UIColor *LTDarkColor() {
 }
 static inline UIColor *LTLightColor() {
     return [UIColor colorWithRed:153.0/255.0 green:152.0/255.0 blue:150.0/255.0 alpha:1.0];
+}
+static inline UIColor *LTLyftColor() {
+    return [UIColor colorWithRed:43.0/255.0 green:179.0/255.0 blue:173.0/255.0 alpha:1.0];
 }
 static inline UIFont *LTRegularFont(CGFloat size) {
     return [UIFont fontWithName:@"HelveticaNeue" size:size];

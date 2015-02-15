@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LTBase.h"
 #import <CoreLocation/CoreLocation.h>
+#import "LTBase.h"
+#import "LTSwitchTableViewCell.h"
+#import "LTDescriptionTableViewCell.h"
+#import "LTDetails.h"
+#import "LTLocationManager.h"
 typedef NS_ENUM(int, LTSection) {
     LTSectionTripLogging = 0,
     LTSectionTripDescription

@@ -21,6 +21,11 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    // set this for making the user to remember that they need to allow location services
+    // for this app to work. Gentle reminder.
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:LTAskedUserPermissionForNotification];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     LTBaseTableViewController *viewController = [[LTBaseTableViewController alloc] initWithStyle:UITableViewStylePlain];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     [self.window setRootViewController:navigationController];

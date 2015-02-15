@@ -11,3 +11,5 @@
 "messageAskPermissionForLoggingTitleBackgroundOff" = "Background location is not enabled";
 "messageLocationServicesTitle" = "Location Services";
 "messageLocatonServicesDescription" = "Location Services need to be turned on";
+"messageAllowNotifications" = "Allow Location Tracking";
+"messageAllowNotificationsDescriptions" = "This app makes use of background and foreground location services. Please allow location tracking";

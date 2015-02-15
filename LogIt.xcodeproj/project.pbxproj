@@ -11,6 +11,8 @@
 		B0A152231A9078DC00AA58F9 /* LTDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A152211A9078DC00AA58F9 /* LTDescriptionTableViewCell.m */; };
 		B0A152261A907A8F00AA58F9 /* LTDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A152251A907A8F00AA58F9 /* LTDetails.m */; };
 		B0A152271A907A8F00AA58F9 /* LTDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A152251A907A8F00AA58F9 /* LTDetails.m */; };
+		B0A1522A1A90C00C00AA58F9 /* LTPermissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A152291A90C00C00AA58F9 /* LTPermissionViewController.m */; };
+		B0A1522B1A90C00C00AA58F9 /* LTPermissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A152291A90C00C00AA58F9 /* LTPermissionViewController.m */; };
 		B0FA4C4B1A8FEEF20041BE7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4A1A8FEEF20041BE7D /* main.m */; };
 		B0FA4C4E1A8FEEF20041BE7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4D1A8FEEF20041BE7D /* AppDelegate.m */; };
 		B0FA4C511A8FEEF30041BE7D /* LogIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4F1A8FEEF30041BE7D /* LogIt.xcdatamodeld */; };
@@ -45,6 +47,8 @@
 		B0A152211A9078DC00AA58F9 /* LTDescriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTDescriptionTableViewCell.m; path = views/LTDescriptionTableViewCell.m; sourceTree = "<group>"; };
 		B0A152241A907A8F00AA58F9 /* LTDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTDetails.h; path = objects/LTDetails.h; sourceTree = "<group>"; };
 		B0A152251A907A8F00AA58F9 /* LTDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTDetails.m; path = objects/LTDetails.m; sourceTree = "<group>"; };
+		B0A152281A90C00C00AA58F9 /* LTPermissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTPermissionViewController.h; path = controllers/LTPermissionViewController.h; sourceTree = "<group>"; };
+		B0A152291A90C00C00AA58F9 /* LTPermissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTPermissionViewController.m; path = controllers/LTPermissionViewController.m; sourceTree = "<group>"; };
 		B0FA4C451A8FEEF10041BE7D /* LogIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FA4C491A8FEEF20041BE7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0FA4C4A1A8FEEF20041BE7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 		B0FA4C751A8FFC710041BE7D /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B0A152281A90C00C00AA58F9 /* LTPermissionViewController.h */,
+				B0A152291A90C00C00AA58F9 /* LTPermissionViewController.m */,
 				B0FA4C711A8FF8050041BE7D /* LTBaseTableViewController.h */,
 				B0FA4C721A8FF8050041BE7D /* LTBaseTableViewController.m */,
 			);
@@ -303,6 +309,7 @@
 				B0FA4C4E1A8FEEF20041BE7D /* AppDelegate.m in Sources */,
 				B0A152221A9078DC00AA58F9 /* LTDescriptionTableViewCell.m in Sources */,
 				B0FA4C4B1A8FEEF20041BE7D /* main.m in Sources */,
+				B0A1522A1A90C00C00AA58F9 /* LTPermissionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +319,7 @@
 			files = (
 				B0FA4C741A8FF8050041BE7D /* LTBaseTableViewController.m in Sources */,
 				B0A152231A9078DC00AA58F9 /* LTDescriptionTableViewCell.m in Sources */,
+				B0A1522B1A90C00C00AA58F9 /* LTPermissionViewController.m in Sources */,
 				B0FA4C801A9014560041BE7D /* LTSwitchTableViewCell.m in Sources */,
 				B0A152271A907A8F00AA58F9 /* LTDetails.m in Sources */,
 				B0FA4C8A1A9039A20041BE7D /* LTLocationManager.m in Sources */,

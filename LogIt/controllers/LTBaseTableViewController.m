@@ -7,11 +7,7 @@
 //
 
 #import "LTBaseTableViewController.h"
-#import "LTSwitchTableViewCell.h"
-#import "LTDescriptionTableViewCell.h"
-#import "LTDetails.h"
-#import "LTLocationManager.h"
-
+#import "LTPermissionViewController.h"
 @interface LTBaseTableViewController () <LTLocationManagerDelegate>
 @property (strong, nonatomic) NSMutableArray *points;
 @end
@@ -25,11 +21,22 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    if ([self locationServicesEnabled]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOnNotification object:nil];
-        [[LTLocationManager sharedLocationManager] startUpdating];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:LTAskedUserPermissionForNotification]==nil && ![self locationServicesEnabled]) {
+        LTPermissionViewController *controller = [LTPermissionViewController new];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+        [self presentViewController:navigationController
+                           animated:YES
+                         completion:^{
+                             [[NSUserDefaults standardUserDefaults] setObject:@"dummy" forKey:LTAskedUserPermissionForNotification];
+                             [[NSUserDefaults standardUserDefaults] synchronize];
+                         }];
     } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
+        if ([self locationServicesEnabled]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOnNotification object:nil];
+            [[LTLocationManager sharedLocationManager] startUpdating];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
+        }
     }
 }
 
