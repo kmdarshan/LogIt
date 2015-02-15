@@ -39,7 +39,7 @@
 }
 -(void)askForNotifications {
     [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOnNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingUserSwitchOnNotification object:nil];
     }];
 }
 - (void)didReceiveMemoryWarning {

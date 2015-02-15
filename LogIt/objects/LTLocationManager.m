@@ -75,8 +75,11 @@ static const NSUInteger kMinimumLocationUpdateInterval = 5;
     if (![CLLocationManager locationServicesEnabled]) {
         if ([self.delegate respondsToSelector:@selector(failedToRequestLocationPermission:message:error:)]) {
             [self.delegate failedToRequestLocationPermission:NSLocalizedString(@"messageLocationServicesTitle",@"") message:NSLocalizedString(@"messageLocatonServicesDescription",@"") error:nil];
-            [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
         }
+        if ([self.delegate respondsToSelector:@selector(changeSwitchTo:)]) {
+            [self.delegate changeSwitchTo:NO];
+        }
+
     } else {
         CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
         if (status == kCLAuthorizationStatusAuthorizedWhenInUse ||
@@ -85,26 +88,38 @@ static const NSUInteger kMinimumLocationUpdateInterval = 5;
             if ([self.delegate respondsToSelector:@selector(failedToRequestLocationPermission:message:error:)]) {
                 [self.delegate failedToRequestLocationPermission:title message:NSLocalizedString(@"messageAskPermissionForLoggingDescription", @"") error:nil];
             }
-            [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
+            if ([self.delegate respondsToSelector:@selector(changeSwitchTo:)]) {
+                [self.delegate changeSwitchTo:NO];
+            }
         }
         else if (status == kCLAuthorizationStatusNotDetermined) {
             [self.locationManager requestAlwaysAuthorization];
         }
         else if (status == kCLAuthorizationStatusRestricted) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
-        } else if (status == kCLAuthorizationStatusAuthorizedAlways) {
+            if ([self.delegate respondsToSelector:@selector(changeSwitchTo:)]) {
+                [self.delegate changeSwitchTo:NO];
+            }
+        } else if (status == kCLAuthorizationStatusAuthorizedAlways) { 
             [self.locationManager startUpdatingLocation];
+            if ([self.delegate respondsToSelector:@selector(changeSwitchTo:)]) {
+                [self.delegate changeSwitchTo:YES];
+            }
         }
     }
 }
 -(void) startUpdating {
-    [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOnNotification object:nil];
+    if ([self.delegate respondsToSelector:@selector(changeSwitchTo:)]) {
+        [self.delegate changeSwitchTo:YES];
+    }
     [self.locationManager startUpdatingLocation];
     self.movementCheckingTimer = [NSTimer timerWithTimeInterval:kMinimumLocationUpdateInterval target:self selector:@selector(checkAppsPosition) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.movementCheckingTimer forMode:NSRunLoopCommonModes];
 }
 -(void) stopUpdating {
-    [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
+    if ([self.delegate respondsToSelector:@selector(changeSwitchTo:)]) {
+        [self.delegate changeSwitchTo:NO];
+    }
+
     [self.locationManager stopUpdatingLocation];
     [self.movementCheckingTimer invalidate];
 }
@@ -126,15 +141,23 @@ static const NSUInteger kMinimumLocationUpdateInterval = 5;
         }
 }
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"fail slowly, don't crash the app %@", [error description]);
     [self.locationManager stopUpdatingLocation];
-    [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
+    if ([self.delegate respondsToSelector:@selector(changeSwitchTo:)]) {
+        [self.delegate changeSwitchTo:NO];
+    }
 }
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status != kCLAuthorizationStatusAuthorizedAlways) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
+        if ([self.delegate respondsToSelector:@selector(changeSwitchTo:)]) {
+            [self.delegate changeSwitchTo:NO];
+        }
+
     } else {
         [self.locationManager startUpdatingLocation];
-        [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOnNotification object:nil];
+        if ([self.delegate respondsToSelector:@selector(changeSwitchTo:)]) {
+            [self.delegate changeSwitchTo:YES];
+        }
     }
 }
 -(void) checkAppsPosition {
@@ -148,7 +171,6 @@ static const NSUInteger kMinimumLocationUpdateInterval = 5;
             CLLocation *endLocation = [self.temporaryLocations lastObject];
             CLLocationDistance meters = [endLocation distanceFromLocation:startLocation];
             if (meters > 0) {
-                NSLog(@"meters %f", meters);
                 LTDetails *details = [LTDetails new];
                 [details setStartLocation:startLocation];
                 [details setEndLocation:endLocation];

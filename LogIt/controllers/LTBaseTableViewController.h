@@ -17,6 +17,10 @@ typedef NS_ENUM(int, LTSection) {
     LTSectionTripLogging = 0,
     LTSectionTripDescription
 };
+typedef NS_ENUM(int, LTAlertType) {
+    LTAlertTypeSettins = 1,
+    LTAlertTypeInfo = 2
+};
 
 #pragma mark - height
 static const CGFloat rowHeightTripDescription = 50.0f;

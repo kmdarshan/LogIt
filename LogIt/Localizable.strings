@@ -13,3 +13,4 @@
 "messageLocatonServicesDescription" = "Location Services need to be turned on";
 "messageAllowNotifications" = "Allow Location Tracking";
 "messageAllowNotificationsDescriptions" = "This app makes use of background and foreground location services. Please allow location tracking";
+"errorUnknown" = "Please try to turn on the location services again. There is an unknown error.";

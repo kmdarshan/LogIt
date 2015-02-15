@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LTSwitchTableViewCell : UITableViewCell
-
+@property (nonatomic) BOOL switchOn;
 @end

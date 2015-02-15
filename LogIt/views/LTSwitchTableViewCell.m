@@ -32,8 +32,6 @@
             [self.switchView setOn:NO animated:YES];
         }
         [self.switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetSwitch:) name:LTLoggingSwitchOffNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetSwitch:) name:LTLoggingSwitchOnNotification object:nil];
     }
     return self;
 }
@@ -53,11 +51,11 @@
     }
 }
 
--(void) resetSwitch:(NSNotification*) notification {
-    if ([[notification name] isEqualToString:LTLoggingSwitchOffNotification]) {
-        [self.switchView setOn:NO animated:YES];
-    } else {
+-(void)setSwitchOn:(BOOL)switchOn {
+    if (switchOn) {
         [self.switchView setOn:YES animated:YES];
+    } else {
+        [self.switchView setOn:NO animated:YES];
     }
 }
 @end

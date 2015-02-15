@@ -10,6 +10,7 @@
 #import "LTPermissionViewController.h"
 @interface LTBaseTableViewController () <LTLocationManagerDelegate>
 @property (strong, nonatomic) NSMutableArray *points;
+@property (nonatomic) BOOL switchOn;
 @end
 
 @implementation LTBaseTableViewController
@@ -32,11 +33,12 @@
                          }];
     } else {
         if ([self locationServicesEnabled]) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOnNotification object:nil];
             [[LTLocationManager sharedLocationManager] startUpdating];
+            self.switchOn = YES;
         } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
+            self.switchOn = NO;
         }
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:LTSectionTripLogging] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
@@ -60,9 +62,23 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"Settings", nil];
+    [alertView setTag:LTAlertTypeSettins];
     [alertView show];
 }
-
+-(void)unknownError:(NSString *)message {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@""
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+    [alertView setTag:LTAlertTypeInfo];
+    [alertView setTag:1];
+    [alertView show];
+}
+-(void)changeSwitchTo:(BOOL)switchOn {
+    self.switchOn = switchOn;
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:LTSectionTripLogging] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 #pragma mark - Setup
 -(void) setup {
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBar"]];
@@ -103,12 +119,15 @@
 #pragma mark - Alerts
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
-    }
-    if (buttonIndex == 1) {
-        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        [[UIApplication sharedApplication] openURL:settingsURL];
+    if ([alertView tag] == LTAlertTypeSettins) {
+        if (buttonIndex == 0) {
+            self.switchOn = NO;
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:LTSectionTripLogging] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        if (buttonIndex == 1) {
+            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            [[UIApplication sharedApplication] openURL:settingsURL];
+        }
     }
 }
 
@@ -152,7 +171,9 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([indexPath section] == LTSectionTripLogging) {
-        return [tableView dequeueReusableCellWithIdentifier:cellIdentifierTripLogging forIndexPath:indexPath];
+        LTSwitchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierTripLogging forIndexPath:indexPath];
+        [cell setSwitchOn:self.switchOn];
+        return cell;
     } else {
         LTDescriptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierTripDescription forIndexPath:indexPath];
         [cell setDetails:[self.points objectAtIndex:[indexPath row]]];

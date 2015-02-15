@@ -15,6 +15,8 @@
 @optional
 -(void) distanceUpdated:(LTDetails*)details;
 -(void) failedToRequestLocationPermission:(NSString*)title message:(NSString*)description error:(NSError*)error;
+-(void) changeSwitchTo:(BOOL)switchOn;
+-(void) unknownError:(NSString*)message;
 @end
 
 @interface LTLocationManager : NSObject<CLLocationManagerDelegate>

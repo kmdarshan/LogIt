@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LTBase.h"
-@interface LTPermissionViewController : UIViewController
+#import "LTLocationManager.h"
+@interface LTPermissionViewController : UIViewController<LTLocationManagerDelegate>
 
 @end
