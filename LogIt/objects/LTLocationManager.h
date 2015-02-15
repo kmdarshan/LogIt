@@ -8,16 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "LTDetails.h"
 @class LTLocationManager;
 
 @protocol LTLocationManagerDelegate <NSObject>
 @optional
--(void) distanceUpdated;
+-(void) distanceUpdated:(LTDetails*)details;
+-(void) failedToRequestLocationPermission:(NSString*)title message:(NSString*)description error:(NSError*)error;
 @end
 
 @interface LTLocationManager : NSObject<CLLocationManagerDelegate>
-+ (LTLocationManager *)sharedLocationManager;
-//-(void)startUpdating;
-//-(void)stopUpdating;
+@property (nonatomic, weak) id<LTLocationManagerDelegate> delegate;
++(LTLocationManager*) sharedLocationManager;
+-(void) requestLocationPermission;
+-(void) stopUpdating;
+-(void) startUpdating;
 @end
 

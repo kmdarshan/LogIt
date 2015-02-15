@@ -8,6 +8,8 @@
 
 #ifndef LogIt_LTBase_h
 #define LogIt_LTBase_h
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 typedef void(^LTCallback)(BOOL success, id result);
 #define keyLocationLogging  @"com.lyft.logger.logging"
 static NSString * const LTLoggingSwitchOffNotification = @"com.lyft.logger.switch.off";

@@ -20,7 +20,7 @@
             self.layoutMargins = UIEdgeInsetsZero;
         }
         self.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"messageTripLogging", nil)];
-        self.textLabel.font = LTBoldFont(15.0f);
+        self.textLabel.font = LTBoldFont(16.0f);
         self.textLabel.textColor = LTDarkColor();
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.switchView = [[UISwitch alloc] initWithFrame:CGRectZero];

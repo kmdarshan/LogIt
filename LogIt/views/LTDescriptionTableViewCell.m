@@ -39,7 +39,7 @@
     NSInteger minutes = (((NSInteger) duration) / 60) - (days * 24 * 60) - (hours * 60);
     NSString *startDate = [self stringFromDate:[startLocation timestamp]];
     NSString *endDate = [self stringFromDate:[endLocation timestamp]];
-    NSString *subtitleText = [NSString stringWithFormat:@"%@-%@ (%dmin)",startDate, endDate, minutes];
+    NSString *subtitleText = [NSString stringWithFormat:@"%@-%@ (%ldmin)",startDate, endDate, (long)minutes];
     callback(YES, subtitleText);
 }
 -(NSString*) stringFromDate:(NSDate*)date {
@@ -55,15 +55,14 @@
     CLGeocoder *geoCoder = [CLGeocoder new];
     [geoCoder reverseGeocodeLocation:startLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         if(error){
-            callback(YES, @"Error");
+            callback(YES, error);
         } else {
             CLPlacemark *startPlacemark = [placemarks lastObject];
             [geoCoder reverseGeocodeLocation:endLocation completionHandler:^(NSArray *placemarks, NSError *error) {
                 if(error){
-                    callback(YES, @"Error");
+                    callback(YES, error);
                 } else {
                     CLPlacemark *endPlacemark = [placemarks lastObject];
-                    
                     NSString *startAddressString = [NSString stringWithFormat:@"%@ %@",
                                                     (startPlacemark.subThoroughfare != nil ? startPlacemark.subThoroughfare : @""), (startPlacemark.thoroughfare != nil ? startPlacemark.thoroughfare : @"")
                                                     ];
