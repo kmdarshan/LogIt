@@ -16,9 +16,15 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        if ([self respondsToSelector:@selector(layoutMargins)]) {
+            self.layoutMargins = UIEdgeInsetsZero;
+        }
         self.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"messageTripLogging", nil)];
+        self.textLabel.font = LTBoldFont(15.0f);
+        self.textLabel.textColor = LTDarkColor();
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+        [self.switchView setOnTintColor:[UIColor colorWithRed:43.0/255.0 green:179.0/255.0 blue:173.0/255.0 alpha:1.0]];
         self.accessoryView = self.switchView;
         if ([self isLoggingSwitchOn]) {
             [self.switchView setOn:YES animated:YES];

@@ -15,8 +15,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.imageView.image = [UIImage imageNamed:@"iconCar"];
-        self.textLabel.text = @"darshan";
-        self.detailTextLabel.text = @"deta";
     }
     return self;
 }
@@ -25,13 +23,17 @@
     CLLocation *endLocation = [details endLocation];
     [self reverseGeoCode:startLocation endLocation:endLocation callback:^(BOOL success, id result) {
         self.textLabel.text = result;
+        self.textLabel.font = LTRegularFont(15.0f);
+        self.textLabel.textColor = LTMediumColor();
     }];
     [self subTitleForLocation:startLocation endLocation:endLocation callback:^(BOOL success, id result) {
         self.detailTextLabel.text = result;
+        self.detailTextLabel.font = LTItalicFont(12.0f);
+        self.detailTextLabel.textColor = LTLightColor();
     }];
 }
 -(void) subTitleForLocation:(CLLocation*)startLocation endLocation:(CLLocation*)endLocation callback:(LTCallback)callback {
-    NSTimeInterval duration = [[startLocation timestamp] timeIntervalSinceDate:[endLocation timestamp]];
+    NSTimeInterval duration = [[endLocation timestamp] timeIntervalSinceDate:[startLocation timestamp]];
     NSInteger days = ((NSInteger) duration) / (60 * 60 * 24);
     NSInteger hours = (((NSInteger) duration) / (60 * 60)) - (days * 24);
     NSInteger minutes = (((NSInteger) duration) / 60) - (days * 24 * 60) - (hours * 60);

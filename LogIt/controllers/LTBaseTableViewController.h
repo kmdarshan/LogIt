@@ -15,8 +15,8 @@ typedef NS_ENUM(int, LTSection) {
 };
 
 #pragma mark - height
-static const CGFloat rowHeightTripDescription = 60.0f;
-static const CGFloat rowHeightTripLogging = 80.0f;
+static const CGFloat rowHeightTripDescription = 50.0f;
+static const CGFloat rowHeightTripLogging = 60.0f;
 #pragma mark - identifiers
 static NSString *cellIdentifierTripLogging = @"cell.identifier.trip.logging";
 static NSString *cellIdentifierTripDescription = @"cell.identifier.trip.description";

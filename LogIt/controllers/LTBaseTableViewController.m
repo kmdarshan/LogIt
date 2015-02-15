@@ -82,13 +82,18 @@ static const NSUInteger kMinimumLocationUpdateInterval = 1; // the interval (sec
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.distanceFilter = kDistanceFilter;
     self.locationManager.headingFilter = kHeadingFilter;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotifications:) name:LTLoggingUserSwitchOnNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotifications:) name:LTLoggingUserSwitchOffNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
     self.movementCheckingTimer = [NSTimer timerWithTimeInterval:kMinimumLocationUpdateInterval target:self selector:@selector(checkIfUserHasNotMoved) userInfo:nil repeats:YES];
      [[NSRunLoop mainRunLoop] addTimer:self.movementCheckingTimer forMode:NSRunLoopCommonModes];
     self.points = [NSMutableArray new];
+    
+    self.tableView.tableFooterView = [UIView new];
+    
+    if ([self.tableView respondsToSelector:@selector(layoutMargins)]) {
+        self.tableView.layoutMargins = UIEdgeInsetsZero;
+    }
 }
 
 #pragma mark - Notification 
@@ -100,6 +105,7 @@ static const NSUInteger kMinimumLocationUpdateInterval = 1; // the interval (sec
 -(void) handleNotifications:(NSNotification*)notification {
     if ([notification.name isEqualToString:LTLoggingUserSwitchOnNotification]) {
         [self requestAuthorization];
+        [self.locationManager startUpdatingLocation];
     }
     else if ([notification.name isEqualToString:LTLoggingUserSwitchOffNotification]) {
         [self stopAuthorization];
@@ -140,6 +146,8 @@ static const NSUInteger kMinimumLocationUpdateInterval = 1; // the interval (sec
         }
         else if (status == kCLAuthorizationStatusRestricted) {
             [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
+        } else if (status == kCLAuthorizationStatusAuthorizedAlways) {
+            [self.locationManager startUpdatingLocation];
         }
     }
 }
@@ -256,49 +264,5 @@ static const NSUInteger kMinimumLocationUpdateInterval = 1; // the interval (sec
 -(void) switchChanged:(id)sender {
     NSLog(@"switch changed");
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
