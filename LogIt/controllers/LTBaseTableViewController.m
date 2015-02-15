@@ -90,9 +90,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
     self.points = [NSMutableArray new];
     self.tableView.tableFooterView = [UIView new];
-    if ([self.tableView respondsToSelector:@selector(layoutMargins)]) {
-        self.tableView.layoutMargins = UIEdgeInsetsZero;
-    }
 }
 
 #pragma mark - Notification 
@@ -168,11 +165,20 @@
         return rowHeightTripDescription;
     }
 }
-
+#pragma mark - Table cell
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([indexPath section] == LTSectionTripLogging) {
         LTSwitchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierTripLogging forIndexPath:indexPath];
         [cell setSwitchOn:self.switchOn];
+        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+            [cell setSeparatorInset:UIEdgeInsetsZero];
+        }
+        if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+            [cell setPreservesSuperviewLayoutMargins:NO];
+        }
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            [cell setLayoutMargins:UIEdgeInsetsZero];
+        }
         return cell;
     } else {
         LTDescriptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierTripDescription forIndexPath:indexPath];
