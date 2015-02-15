@@ -8,9 +8,12 @@
 
 #import "LTLocationManager.h"
 #import "LTBase.h"
-static const NSUInteger kDistanceFilter = 5; // the minimum distance (meters) for which we want to receive location updates (see docs for CLLocationManager.distanceFilter)
-static const NSUInteger kHeadingFilter = 30; // the minimum angular change (degrees) for which we want to receive heading updates (see docs for CLLocationManager.headingFilter)
-static const NSUInteger kMinimumLocationUpdateInterval = 1; // the interval (seconds) at which we ping for a new location if we haven't received one yet
+// the minimum distance (meters) for which we want to receive location updates (see docs for CLLocationManager.distanceFilter)
+static const NSUInteger kDistanceFilter = 5;
+// the minimum angular change (degrees) for which we want to receive heading updates (see docs for CLLocationManager.headingFilter)
+static const NSUInteger kHeadingFilter = 30;
+// the interval (seconds) at which we ping for a new location if we haven't received one yet
+static const NSUInteger kMinimumLocationUpdateInterval = 1;
 @interface LTLocationManager()
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray *temporaryLocations;
@@ -100,6 +103,7 @@ static const NSUInteger kMinimumLocationUpdateInterval = 1; // the interval (sec
 }
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     [self.locationManager stopUpdatingLocation];
+    [[NSNotificationCenter defaultCenter] postNotificationName:LTLoggingSwitchOffNotification object:nil];
 }
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status != kCLAuthorizationStatusAuthorizedAlways) {

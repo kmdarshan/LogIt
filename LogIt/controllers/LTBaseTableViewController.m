@@ -12,9 +12,7 @@
 #import "LTDetails.h"
 #import "LTLocationManager.h"
 
-@interface LTBaseTableViewController () <LTLocationManagerDelegate>
-@property (strong, nonatomic) NSTimer *movementCheckingTimer;
-@property (strong, nonatomic) NSMutableArray *locations;
+@interface LTBaseTableViewController () <LTLocationManagerDelegate>  
 @property (strong, nonatomic) NSMutableArray *points;
 @end
 
