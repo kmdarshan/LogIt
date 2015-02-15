@@ -40,6 +40,10 @@
     }
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:LTLoggingUserSwitchOnNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:LTLoggingUserSwitchOffNotification object:nil];
+}
 #pragma mark - LTLocationManagerDelegates
 -(void)distanceUpdated:(LTDetails *)details {
     [self.points addObject:details];
