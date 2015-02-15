@@ -13,7 +13,7 @@ static const NSUInteger kDistanceFilter = 5;
 // the minimum angular change (degrees) for which we want to receive heading updates (see docs for CLLocationManager.headingFilter)
 static const NSUInteger kHeadingFilter = 30;
 // the interval (seconds) at which we ping for a new location if we haven't received one yet
-static const NSUInteger kMinimumLocationUpdateInterval = 1;
+static const NSUInteger kMinimumLocationUpdateInterval = 5;
 @interface LTLocationManager()
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray *temporaryLocations;
@@ -38,8 +38,32 @@ static const NSUInteger kMinimumLocationUpdateInterval = 1;
         self.locationManager.distanceFilter = kDistanceFilter;
         self.locationManager.headingFilter = kHeadingFilter;
         self.temporaryLocations = [NSMutableArray new];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(manageNotifications:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(manageNotifications:) name:UIApplicationWillEnterForegroundNotification object:nil];
     }
     return self;
+}
+#pragma mark - Notifications
+-(void) manageNotifications:(NSNotification*)notification {
+    if ([[notification name] isEqualToString:UIApplicationDidEnterBackgroundNotification]) {
+        [self.movementCheckingTimer invalidate];
+        UIApplication *app = [UIApplication sharedApplication];
+        __block UIBackgroundTaskIdentifier bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+            [app endBackgroundTask:bgTask];
+            bgTask = UIBackgroundTaskInvalid;
+        }];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            self.movementCheckingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkAppsPosition) userInfo:nil repeats:YES];
+            [[NSRunLoop currentRunLoop] addTimer:self.movementCheckingTimer forMode:NSDefaultRunLoopMode];
+            [[NSRunLoop currentRunLoop] run];
+        });
+    } else
+    if ([[notification name] isEqualToString:UIApplicationWillEnterForegroundNotification]) {
+        [self.movementCheckingTimer invalidate];
+        self.movementCheckingTimer = [NSTimer timerWithTimeInterval:kMinimumLocationUpdateInterval target:self selector:@selector(checkAppsPosition) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:self.movementCheckingTimer forMode:NSRunLoopCommonModes];
+    }
 }
 -(BOOL) locationServicesEnabled {
     if (![CLLocationManager locationServicesEnabled] || ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways)) {
