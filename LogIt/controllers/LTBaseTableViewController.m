@@ -7,7 +7,7 @@
 //
 
 #import "LTBaseTableViewController.h"
-
+#import "LTSwitchTableViewCell.h"
 @interface LTBaseTableViewController ()
 
 @end
@@ -29,20 +29,13 @@
 #pragma mark - Setup
 -(void) setup {
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBar"]];
+    [self.tableView registerClass:[LTSwitchTableViewCell class] forCellReuseIdentifier:cellIdentifierTripLogging];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifierTripDescription];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifierTripLogging];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Helper methods
--(BOOL) isLoggingSwitchOn {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:keyLocationLogging]) {
-        return YES;
-    }
-    return NO;
-}
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
@@ -78,25 +71,14 @@
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell;
     if ([indexPath section] == LTSectionTripLogging) {
-        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierTripLogging forIndexPath:indexPath];
-        cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"messageTripLogging", nil)];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-        cell.accessoryView = switchView;
-        if ([self isLoggingSwitchOn]) {
-            [switchView setOn:YES animated:YES];
-        } else {
-            [switchView setOn:NO animated:YES];
-        }
-        [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+        return [tableView dequeueReusableCellWithIdentifier:cellIdentifierTripLogging forIndexPath:indexPath];
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierTripDescription forIndexPath:indexPath];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierTripDescription forIndexPath:indexPath];
         cell.imageView.image = [UIImage imageNamed:@"iconCar"];
         cell.textLabel.text = @"darshan";
+        return cell;
     }
-    return cell;
 }
 
 #pragma mark - Switch 
