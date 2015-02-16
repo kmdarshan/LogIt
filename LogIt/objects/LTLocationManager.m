@@ -10,8 +10,9 @@
 #import "LTBase.h"
 static const NSUInteger kDistanceFilter = 5;
 static const NSUInteger kHeadingFilter = 30;
-static const NSUInteger kMinimumLocationUpdateInterval = 5;
-static const NSUInteger kMinimumSpeedForTrackingUser = 5;
+static const NSUInteger kMinimumLocationUpdateInterval = 30;
+static const NSUInteger kMinimumSpeedForTrackingUser = 10;
+static const NSUInteger kMinimumIntervalForCheckingUserLocation = 60;
 @interface LTLocationManager()
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray *temporaryLocations;
@@ -125,7 +126,6 @@ static const NSUInteger kMinimumSpeedForTrackingUser = 5;
 #pragma mark - Location delegates
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *lastLocation = [locations lastObject];
-    NSLog(@"change locations count %lu %f %f speed %f", (unsigned long)[locations count], lastLocation.coordinate.latitude, lastLocation.coordinate.longitude, [lastLocation speed]);
     if ([self.temporaryLocations count] == 0) {
         // this is the first time, no locations are recorded
         if (lastLocation.speed > kMinimumSpeedForTrackingUser) {
@@ -163,7 +163,7 @@ static const NSUInteger kMinimumSpeedForTrackingUser = 5;
         CLLocation *location = [self.temporaryLocations lastObject];
         NSDate *todaysDate = [NSDate date];
         NSTimeInterval interval = [todaysDate timeIntervalSinceDate:[location timestamp]];
-        if (interval > 10) {
+        if (interval > kMinimumIntervalForCheckingUserLocation) {
             // user is in the same place for more than 60 seconds
             CLLocation *startLocation = [self.temporaryLocations objectAtIndex:0];
             CLLocation *endLocation = [self.temporaryLocations lastObject];
