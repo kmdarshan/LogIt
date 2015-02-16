@@ -53,7 +53,7 @@ static const NSUInteger kMinimumIntervalForCheckingUserLocation = 60;
         }];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            self.movementCheckingTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkAppsPosition) userInfo:nil repeats:YES];
+            self.movementCheckingTimer = [NSTimer scheduledTimerWithTimeInterval:kMinimumLocationUpdateInterval target:self selector:@selector(checkAppsPosition) userInfo:nil repeats:YES];
             [[NSRunLoop currentRunLoop] addTimer:self.movementCheckingTimer forMode:NSDefaultRunLoopMode];
             [[NSRunLoop currentRunLoop] run];
         });
