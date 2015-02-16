@@ -112,12 +112,12 @@
 			children = (
 				B0FA4C8E1A9044820041BE7D /* Location.gpx */,
 				B0FA4C861A901D410041BE7D /* models */,
-				B0FA4C7C1A9013DD0041BE7D /* frameworks */,
 				B0FA4C811A90145E0041BE7D /* views */,
 				B0FA4C4C1A8FEEF20041BE7D /* AppDelegate.h */,
 				B0FA4C4D1A8FEEF20041BE7D /* AppDelegate.m */,
 				B0FA4C751A8FFC710041BE7D /* controllers */,
 				B0FA4C581A8FEEF30041BE7D /* Images.xcassets */,
+				B0FA4C7C1A9013DD0041BE7D /* frameworks */,
 				B0FA4C791A90075D0041BE7D /* LTBase.h */,
 				B0FA4C5A1A8FEEF30041BE7D /* LaunchScreen.xib */,
 				B0FA4C761A90069B0041BE7D /* Localizable.strings */,
