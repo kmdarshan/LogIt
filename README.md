@@ -1,7 +1,7 @@
 # LogIt
+![Alt text](https://github.com/kmdarshan/LogIt/blob/master/screenshots/IMG_5216.PNG "one")
 ![Alt text](https://github.com/kmdarshan/LogIt/blob/master/screenshots/IMG_5218.PNG "one")
 ![Alt text](https://github.com/kmdarshan/LogIt/blob/master/screenshots/IMG_5210.PNG "one")
-![Alt text](https://github.com/kmdarshan/LogIt/blob/master/screenshots/IMG_5216.PNG "one")
 ![Alt text](https://github.com/kmdarshan/LogIt/blob/master/screenshots/IMG_5217.PNG "one")
 
 This app logs trips for the user. A trip is what it sounds like, a period of
