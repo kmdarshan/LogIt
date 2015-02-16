@@ -15,7 +15,6 @@
 		B0A1522B1A90C00C00AA58F9 /* LTPermissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A152291A90C00C00AA58F9 /* LTPermissionViewController.m */; };
 		B0FA4C4B1A8FEEF20041BE7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4A1A8FEEF20041BE7D /* main.m */; };
 		B0FA4C4E1A8FEEF20041BE7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4D1A8FEEF20041BE7D /* AppDelegate.m */; };
-		B0FA4C511A8FEEF30041BE7D /* LogIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C4F1A8FEEF30041BE7D /* LogIt.xcdatamodeld */; };
 		B0FA4C591A8FEEF30041BE7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0FA4C581A8FEEF30041BE7D /* Images.xcassets */; };
 		B0FA4C5C1A8FEEF30041BE7D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0FA4C5A1A8FEEF30041BE7D /* LaunchScreen.xib */; };
 		B0FA4C681A8FEEF50041BE7D /* LogItTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA4C671A8FEEF50041BE7D /* LogItTests.m */; };
@@ -54,7 +53,6 @@
 		B0FA4C4A1A8FEEF20041BE7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B0FA4C4C1A8FEEF20041BE7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B0FA4C4D1A8FEEF20041BE7D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B0FA4C501A8FEEF30041BE7D /* LogIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LogIt.xcdatamodel; sourceTree = "<group>"; };
 		B0FA4C581A8FEEF30041BE7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B0FA4C5B1A8FEEF30041BE7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B0FA4C611A8FEEF50041BE7D /* LogItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +121,6 @@
 				B0FA4C791A90075D0041BE7D /* LTBase.h */,
 				B0FA4C5A1A8FEEF30041BE7D /* LaunchScreen.xib */,
 				B0FA4C761A90069B0041BE7D /* Localizable.strings */,
-				B0FA4C4F1A8FEEF30041BE7D /* LogIt.xcdatamodeld */,
 				B0FA4C481A8FEEF10041BE7D /* Supporting Files */,
 			);
 			path = LogIt;
@@ -302,7 +299,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0FA4C731A8FF8050041BE7D /* LTBaseTableViewController.m in Sources */,
-				B0FA4C511A8FEEF30041BE7D /* LogIt.xcdatamodeld in Sources */,
 				B0FA4C891A9039A20041BE7D /* LTLocationManager.m in Sources */,
 				B0FA4C7F1A9014560041BE7D /* LTSwitchTableViewCell.m in Sources */,
 				B0A152261A907A8F00AA58F9 /* LTDetails.m in Sources */,
@@ -514,19 +510,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		B0FA4C4F1A8FEEF30041BE7D /* LogIt.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				B0FA4C501A8FEEF30041BE7D /* LogIt.xcdatamodel */,
-			);
-			currentVersion = B0FA4C501A8FEEF30041BE7D /* LogIt.xcdatamodel */;
-			path = LogIt.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = B0FA4C3D1A8FEEF10041BE7D /* Project object */;
 }
