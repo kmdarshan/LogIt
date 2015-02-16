@@ -113,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				B0FA4C8E1A9044820041BE7D /* Location.gpx */,
-				B0FA4C861A901D410041BE7D /* objects */,
+				B0FA4C861A901D410041BE7D /* models */,
 				B0FA4C7C1A9013DD0041BE7D /* frameworks */,
 				B0FA4C811A90145E0041BE7D /* views */,
 				B0FA4C4C1A8FEEF20041BE7D /* AppDelegate.h */,
@@ -186,7 +186,7 @@
 			name = views;
 			sourceTree = "<group>";
 		};
-		B0FA4C861A901D410041BE7D /* objects */ = {
+		B0FA4C861A901D410041BE7D /* models */ = {
 			isa = PBXGroup;
 			children = (
 				B0FA4C871A9039A20041BE7D /* LTLocationManager.h */,
@@ -194,7 +194,7 @@
 				B0A152241A907A8F00AA58F9 /* LTDetails.h */,
 				B0A152251A907A8F00AA58F9 /* LTDetails.m */,
 			);
-			name = objects;
+			name = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
