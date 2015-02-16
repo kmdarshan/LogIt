@@ -1,4 +1,9 @@
 # LogIt
+![Alt text](https://github.com/kmdarshan/LogIt/blob/master/screenshots/IMG_5216.PNG "one")
+![Alt text](https://github.com/kmdarshan/LogIt/blob/master/screenshots/IMG_5218.PNG "one")
+![Alt text](https://github.com/kmdarshan/LogIt/blob/master/screenshots/IMG_5210.PNG "one")
+![Alt text](https://github.com/kmdarshan/LogIt/blob/master/screenshots/IMG_5217.PNG "one")
+
 This app logs trips for the user. A trip is what it sounds like, a period of
 moving from one location to another, in between periods of being still. The trip log should
 contain a sorted list of entries, each consisting of start and end addresses of the trip, the time
