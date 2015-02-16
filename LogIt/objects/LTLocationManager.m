@@ -60,8 +60,11 @@ static const NSUInteger kMinimumIntervalForCheckingUserLocation = 60;
     } else
     if ([[notification name] isEqualToString:UIApplicationWillEnterForegroundNotification]) {
         [self.movementCheckingTimer invalidate];
-        self.movementCheckingTimer = [NSTimer timerWithTimeInterval:kMinimumLocationUpdateInterval target:self selector:@selector(checkAppsPosition) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:self.movementCheckingTimer forMode:NSRunLoopCommonModes];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            self.movementCheckingTimer = [NSTimer scheduledTimerWithTimeInterval:kMinimumLocationUpdateInterval target:self selector:@selector(checkAppsPosition) userInfo:nil repeats:YES];
+            [[NSRunLoop currentRunLoop] addTimer:self.movementCheckingTimer forMode:NSDefaultRunLoopMode];
+            [[NSRunLoop currentRunLoop] run];
+        });
     }
 }
 -(BOOL) locationServicesEnabled {
