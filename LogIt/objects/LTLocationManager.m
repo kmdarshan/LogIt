@@ -11,8 +11,8 @@
 static const NSUInteger kDistanceFilter = 5;
 static const NSUInteger kHeadingFilter = 30;
 static const NSUInteger kMinimumLocationUpdateInterval = 30;
-static const NSUInteger kMinimumSpeedForTrackingUser = 10;
-static const NSUInteger kMinimumIntervalForCheckingUserLocation = 60;
+static const NSUInteger kMinimumSpeedForTrackingUser = 4.4704; // metres/sec that is 10 miles/hour
+static const NSUInteger kMinimumIntervalForCheckingUserLocation = 60; // if the user is still for a minute
 @interface LTLocationManager()
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray *temporaryLocations;
