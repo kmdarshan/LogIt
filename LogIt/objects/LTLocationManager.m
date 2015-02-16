@@ -8,12 +8,10 @@
 
 #import "LTLocationManager.h"
 #import "LTBase.h"
-// the minimum distance (meters) for which we want to receive location updates (see docs for CLLocationManager.distanceFilter)
 static const NSUInteger kDistanceFilter = 5;
-// the minimum angular change (degrees) for which we want to receive heading updates (see docs for CLLocationManager.headingFilter)
 static const NSUInteger kHeadingFilter = 30;
-// the interval (seconds) at which we ping for a new location if we haven't received one yet
 static const NSUInteger kMinimumLocationUpdateInterval = 5;
+static const NSUInteger kMinimumSpeedForTrackingUser = 5;
 @interface LTLocationManager()
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray *temporaryLocations;
@@ -130,7 +128,7 @@ static const NSUInteger kMinimumLocationUpdateInterval = 5;
     NSLog(@"change locations count %lu %f %f speed %f", (unsigned long)[locations count], lastLocation.coordinate.latitude, lastLocation.coordinate.longitude, [lastLocation speed]);
     if ([self.temporaryLocations count] == 0) {
         // this is the first time, no locations are recorded
-        if (lastLocation.speed > 10) {
+        if (lastLocation.speed > kMinimumSpeedForTrackingUser) {
             // the speed is greater than 10 miles, the trip is starting
             [self.temporaryLocations addObject:lastLocation];
         }
@@ -165,7 +163,7 @@ static const NSUInteger kMinimumLocationUpdateInterval = 5;
         CLLocation *location = [self.temporaryLocations lastObject];
         NSDate *todaysDate = [NSDate date];
         NSTimeInterval interval = [todaysDate timeIntervalSinceDate:[location timestamp]];
-        if (interval > 15) {
+        if (interval > 10) {
             // user is in the same place for more than 60 seconds
             CLLocation *startLocation = [self.temporaryLocations objectAtIndex:0];
             CLLocation *endLocation = [self.temporaryLocations lastObject];
