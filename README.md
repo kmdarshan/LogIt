@@ -15,3 +15,22 @@ The log should then show something like
 Things to note:
 
 1. If the simulator gives you an error you need to set a default location in the scheme.
+
+Functional requirements
+
+● The log should be fully automated, as seen in the mockups, so that the user does not
+have to manually tag when a trip starts or ends, or enter start and end addresses.
+
+● A trip starts whenever the device is moving at more than 10 mph. A trip ends when the
+device is still for more than 1 minute.
+
+● Note that you can use the simulator to simulate a mock drive for easy testing under
+Debug>
+Location>
+Freeway Drive.
+
+● Use the Geocoder service to get the addresses of the start and stop locations.
+
+● The ON/OFF switch enables and disables trip logging.
+
+● Logging should be happening even when the phone is locked.
