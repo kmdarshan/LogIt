@@ -32,6 +32,15 @@
             [self.switchView setOn:NO animated:YES];
         }
         [self.switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+        if ([self respondsToSelector:@selector(setSeparatorInset:)]) {
+            [self setSeparatorInset:UIEdgeInsetsZero];
+        }
+        if ([self respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+            [self setPreservesSuperviewLayoutMargins:NO];
+        }
+        if ([self respondsToSelector:@selector(setLayoutMargins:)]) {
+            [self setLayoutMargins:UIEdgeInsetsZero];
+        }
     }
     return self;
 }

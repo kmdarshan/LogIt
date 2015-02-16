@@ -15,6 +15,15 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.imageView.image = [UIImage imageNamed:@"iconCar"];
+        if ([self respondsToSelector:@selector(setSeparatorInset:)]) {
+            [self setSeparatorInset:UIEdgeInsetsZero];
+        }
+        if ([self respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+            [self setPreservesSuperviewLayoutMargins:NO];
+        }
+        if ([self respondsToSelector:@selector(setLayoutMargins:)]) {
+            [self setLayoutMargins:UIEdgeInsetsZero];
+        }
     }
     return self;
 }
